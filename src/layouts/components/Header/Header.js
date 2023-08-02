@@ -1,25 +1,27 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faEllipsisVertical,
-    faEarthAsia,
     faCircleQuestion,
-    faKeyboard,
     faCoins,
+    faEarthAsia,
+    faEllipsisVertical,
     faGear,
-    faUser,
+    faKeyboard,
     faSignOut,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import Button from '~/components/Button';
+import config from '~/config';
+import Button from '~/components/Button/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Menu from '~/components/Popper/Menu';
-import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
-import Image from '~/components/Image';
-import Search from '../Search';
+import Menu from '~/components/Popper/Menu/Menu';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons/Icons';
+import Image from '~/components/Image/Image';
+import Search from '../Search/Search';
 
 const cx = classNames.bind(styles);
 
@@ -31,12 +33,12 @@ const MENU_ITEMS = [
             title: 'Language',
             data: [
                 {
-                    // title: 'language',
+                    type: 'language',
                     code: 'en',
                     title: 'English',
                 },
                 {
-                    // title: 'language',
+                    type: 'language',
                     code: 'vi',
                     title: 'Tiếng Việt',
                 },
@@ -55,14 +57,14 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-
     const currentUser = true;
 
+    // Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':
+                // Handle change language
                 break;
-
             default:
         }
     };
@@ -95,10 +97,10 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
-                    <img src={images.logo} alt="TikTok" />
-                </div>
-                
+                <Link to={config.routes.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
+
                 <Search />
 
                 <div className={cx('actions')}>
@@ -127,13 +129,13 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
+
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
-                                src=""
                                 className={cx('user-avatar')}
-                                alt="User"
-                                // fallback=''
+                                src="https://files.fullstack.edu.vn/f8-prod/user_avatars/1/623d4b2d95cec.png"
+                                alt="Nguyen Van A"
                             />
                         ) : (
                             <button className={cx('more-btn')}>

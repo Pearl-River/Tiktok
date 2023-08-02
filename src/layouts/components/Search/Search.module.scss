@@ -5,20 +5,22 @@
 
 .search {
     position: relative;
-    height: 46px;
+    height: var(--search-height);
     padding-left: 16px;
     display: flex;
     background-color: rgba(22, 24, 35, 0.06);
-    border-radius: 92px;
+    border-radius: var(--search-border-radius);
     border: 1.5px solid transparent;
 
     input {
         flex: 1;
         height: 100%;
-        color: #000;
+        padding-right: 40px;
+        color: var(--black);
         font-size: 1.6rem;
+        caret-color: var(--primary);
         background-color: transparent;
-        caret-color: red;
+        font-family: var(--font-family);
     }
 
     input:not(:placeholder-shown) ~ .search-btn {
@@ -26,20 +28,16 @@
     }
 
     &::after {
-        content: "";
+        content: '';
         position: absolute;
-        top: 9px;
-        right: 52px;
+        top: var(--search-top-spacer);
+        right: var(--search-button-width);
         width: 1px;
-        height: 28px;
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
         background-color: rgba(22, 24, 35, 0.12);
     }
 
     &:focus-within {
-        border-color: rgba(22, 24, 35, 0.2);
-    }
-
-    &:hover {
         border-color: rgba(22, 24, 35, 0.2);
     }
 }
@@ -54,14 +52,14 @@
 .clear,
 .loading {
     position: absolute;
-    right: 68px;
+    right: calc(var(--search-button-width) + 16px);
     top: 50%;
     transform: translateY(-50%);
     color: rgba(22, 24, 35, 0.34);
 }
 
 .loading {
-    animation: spinner 1s linear infinite;
+    animation: spinner 0.8s linear infinite;
 }
 
 @keyframes spinner {
@@ -77,9 +75,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 52px;
+    width: var(--search-button-width);
     height: 100%;
-    border-radius: 0 92px 92px 0;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
     font-size: 1.8rem;
     color: rgba(22, 24, 35, 0.34);
 

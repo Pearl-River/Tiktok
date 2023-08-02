@@ -7,9 +7,9 @@
     border-radius: 4px;
     font-size: 1.6rem;
     font-weight: 700;
-    font-family: 'Mulish', sans-serif;
+    font-family: var(--font-family);
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--white);
     border: 1px solid transparent;
     user-select: none;
 
@@ -34,9 +34,10 @@
     text-align: center;
 }
 
+// Button types
 .rounded {
     border-radius: 999px;
-    box-shadow: 0 2px 8px rgb(0 0 0 /6%);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
     border-color: rgba(22, 24, 35, 0.12);
 
     &:hover {
@@ -46,23 +47,23 @@
 }
 
 .primary {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(254, 44, 85, 1);
-    border-color: rgba(254, 44, 85, 1);
+    color: var(--white);
+    background-color: var(--primary);
+    border-color: var(--primary);
 
     &:hover {
-        border-color: rgba(254, 44, 85, 1);
+        border-color: var(--primary);
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
     }
 }
 
 .outline {
-    color: rgba(254, 44, 85, 1);
-    border-color: rgba(254, 44, 85, 1);
+    color: var(--primary);
+    border-color: currentColor;
 
     &:hover {
-        border-color: rgba(254, 44, 85, 1);
-        background-color: rgba(255, 238, 242, 1);
+        border-color: currentColor;
+        background-color: rgba(254, 44, 85, 0.06);
     }
 }
 
@@ -72,12 +73,13 @@
     }
 }
 
+// Button sizes
 .small {
     min-width: 88px;
     padding: 4px 16px;
 }
 
 .large {
-    min-width: 140px;
     padding: 14px 16px;
+    min-width: 140px;
 }
